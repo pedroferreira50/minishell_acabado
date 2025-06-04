@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:31:59 by scarlos-          #+#    #+#             */
-/*   Updated: 2025/06/04 08:10:19 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:16:24 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,6 +336,10 @@ char			*expand_variables(const char *arg, char quote_type,
 char			*expand_mixed_quotes(const char *str, t_shell *shell);
 
 // parse_quote_segments.c
+void			skip_quoted_section(const char *str, int *i);
+void			skip_unquoted_section(const char *str, int *i);
+int				count_segments(const char *str);
+int				find_quote_end(const char *str, int start, char quote_char);
 t_quote_segment	*parse_quote_segments(const char *str, int *count);
 
 //find_command_path.c
@@ -343,6 +347,8 @@ char			*find_command_path(char *command, t_shell *shell);
 
 //pipes_and_execution folder
 // pipeline.c
+void			finalize_execution(t_exec_state *state, pid_t *pids,
+					t_command_data *data, t_shell *shell);
 void			setup_pipes_and_redirections(t_command_data *data,
 					t_exec_state *state, int num_commands, t_shell *shell);
 int				setup_pipeline(t_command_data *data, t_exec_state *state,

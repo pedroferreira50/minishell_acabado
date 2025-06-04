@@ -6,7 +6,7 @@ RM = rm -rf
 OBJDIR = objs
 
 SRCS =  ./builtins/check_execute_builtins.c \
-		./builtins/builtins_utils.c \
+		./builtins/builtins_utils.c ./builtins/builtins_utils2.c  \
 		./builtins/echo.c \
 		./builtins/pwd.c \
 		./builtins/cd.c \
@@ -18,6 +18,7 @@ SRCS =  ./builtins/check_execute_builtins.c \
 		./builtins/env.c \
 		./builtins/exit.c \
 		./expand_vars/calc_size.c \
+		./expand_vars/expand_utils.c \
 		./expand_vars/fill_expanded.c \
 		./expand_vars/fill_expanded_utils.c \
 		./expand_vars/var_expansion.c \
@@ -33,10 +34,13 @@ SRCS =  ./builtins/check_execute_builtins.c \
 		./pipes_and_execution/pipeline.c \
 		./pipes_and_execution/execute_utils.c \
 		./pipes_and_execution/execute_utils2.c \
-		error.c free_handling.c \
+		./pipes_and_execution/execute_utils3.c \
+		./parse_input/parse_input_utils.c ./parse_input/count_commands.c \
+		./parse_input/count_commands_utils.c ./parse_input/parse_input.c \
+		error.c free_handling.c free_utils.c \
 		handle_operator.c handle_redirect.c handle_redirect_utils.c \
 		handle_heredoc.c handle_heredoc_utils.c handle_command_utils.c loc_vars.c main.c \
-		./parse_input/parse_input_utils.c ./parse_input/count_commands.c ./parse_input/count_commands_utils.c ./parse_input/parse_input.c expand_vars/command_processor.c main_utils.c \
+		expand_vars/command_processor.c main_utils.c \
 		parsing_utils.c signal.c find_command_path.c remove_quotes.c \
 		has_mixed_quotes.c
 
