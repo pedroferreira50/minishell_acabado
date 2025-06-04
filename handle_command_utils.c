@@ -90,11 +90,11 @@ t_command_data	*prepare_command_data(char **filtered_args, t_shell *shell)
 
 void	execute_command_pipeline(t_command_data *data, t_shell *shell)
 {
-	if (shell->exit_status == 2)
+	/*if (shell->exit_status == 2)
 	{
 		cleanup_command_data(data);
 		return ;
-	}
+	}*/
 	if (shell->exit_status != 2 && validate_command(data->commands, shell) == 0)
 	{
 		cleanup_command_data(data);
