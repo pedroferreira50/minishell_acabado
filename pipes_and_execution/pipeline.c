@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipeline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:27:01 by scarlos-          #+#    #+#             */
-/*   Updated: 2025/06/04 05:41:48 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:17:01 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	redirect_and_close(int oldfd, int newfd)
 	close(oldfd);
 }
 
-static int setup_output_redirect(t_command_data *data, int i, t_shell *shell)
+static int	setup_output_redirect(t_command_data *data, int i, t_shell *shell)
 {
 	int	fd;
 	int	flags;

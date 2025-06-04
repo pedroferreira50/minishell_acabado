@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:08:13 by scarlos-          #+#    #+#             */
-/*   Updated: 2025/06/04 06:30:57 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:41:03 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,6 @@ static void	remove_from_env(char *name, char ***envp)
 	}
 }
 
-/* static bool	is_invalid_arg(char *arg)
-{
-	if (!is_valid_var_name(arg))
-	{
-		return (1);
-	}
-	return (0);
-} */
-
 int	ft_unset(char **args, t_var **vars, char ***envp)
 {
 	int	i;
@@ -110,15 +101,15 @@ int	ft_unset(char **args, t_var **vars, char ***envp)
 		if (args[i][0] == '\0')
 		{
 			i++;
-			continue;
+			continue ;
 		}
 		if (args[i][0] == '-' && args[i][1] != '\0')
 			return (handle_builtin_invalid_option(args[i], "unset",
-				"unset: usage: unset [name ...]\n"));
+					"unset: usage: unset [name ...]\n"));
 		if (!is_valid_var_name(args[i]))
 		{
 			i++;
-			continue;
+			continue ;
 		}
 		remove_from_vars(args[i], vars);
 		remove_from_env(args[i], envp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:20:50 by scarlos-          #+#    #+#             */
-/*   Updated: 2025/06/04 06:44:24 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:21:39 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	ft_isspace(int c)
 		c == '\f' || c == '\r');
 }
 
-
 int	handle_invalid_identifier(char *name, t_shell *shell)
 {
 	ft_putstr_fd("minishell: export: `", 2);
@@ -57,7 +56,7 @@ int	handle_invalid_identifier(char *name, t_shell *shell)
 	return (1);
 }
 
-void insertion_sort_env(char **env)
+void	insertion_sort_env(char **env)
 {
 	int		i;
 	int		j;

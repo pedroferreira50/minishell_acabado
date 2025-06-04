@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 07:26:00 by pedro             #+#    #+#             */
-/*   Updated: 2025/06/04 07:40:10 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:58:23 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	populate_argument(char **args, t_command_data *data,
 	state->idx.j++;
 	state->idx.i++;
 }
-
 
 void	parse_input(char **args, int count, t_command_data *data,
 	t_shell *shell)

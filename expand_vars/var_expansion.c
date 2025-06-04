@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   var_expansion.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:47:12 by scarlos-          #+#    #+#             */
-/*   Updated: 2025/06/04 08:11:28 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:56:11 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-size_t calc_var_size(const char *arg, t_indices *indices, t_shell *shell)
+size_t	calc_var_size(const char *arg, t_indices *indices, t_shell *shell)
 {
 	size_t	start;
 	size_t	var_len;
@@ -22,7 +22,7 @@ size_t calc_var_size(const char *arg, t_indices *indices, t_shell *shell)
 	if (!arg || !indices || !shell)
 		return (0);
 	if (arg[indices->i + 1] == '?')
-		return handle_exit_status(NULL, 0, &indices->i, shell);
+		return (handle_exit_status(NULL, 0, &indices->i, shell));
 	indices->i++;
 	start = indices->i;
 	if (!isalpha(arg[start]) && arg[start] != '_')
@@ -114,4 +114,3 @@ char	*expand_variables(const char *arg, char quote_type, t_shell *shell)
 	fill_expanded(expanded, arg, quote_type, shell);
 	return (expanded);
 }
-

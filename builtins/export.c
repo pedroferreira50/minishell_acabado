@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:07:46 by scarlos-          #+#    #+#             */
-/*   Updated: 2025/06/04 06:47:38 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:39:55 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	export_var_append(char *name, char *value, t_shell *shell)
 {
 	char	*existing_value;
 	char	*new_value;
-	
+
 	if (!name || !value || !shell)
 		return ;
 	existing_value = get_var_value_helper(name, shell->vars, shell->envp);
@@ -74,7 +74,6 @@ int	handle_export_with_value(char *arg, t_shell *shell)
 	value = equal + 1;
 	if (!is_valid_var_name(name))
 		return (handle_invalid_identifier(name, shell));
-	
 	if (is_append)
 		export_var_append(name, value, shell);
 	else
@@ -118,7 +117,7 @@ int	ft_export(char **args, t_shell *shell)
 	{
 		if (args[i][0] == '-' && args[i][1] != '\0')
 			return (handle_builtin_invalid_option(args[i], "export",
-				"export: usage: export [name[=value] ...]\n"));
+					"export: usage: export [name[=value] ...]\n"));
 		equal = ft_strchr(args[i], '=');
 		if (equal)
 			status |= handle_export_with_value(args[i], shell);

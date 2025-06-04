@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:07:07 by scarlos-          #+#    #+#             */
-/*   Updated: 2025/06/04 06:47:28 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:39:06 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,6 @@ char	**copy_envp(char **envp)
 	return (new_envp);
 }
 
-/* static void	sort_env(char **env, int count)
-{
-	char	*tmp;
-	int		i;
-	int		j;
-
-	i = -1;
-	while (++i < count - 1)
-	{
-		j = i + 1;
-		while (j < count)
-		{
-			if (ft_strcmp(env[i], env[j]) > 0)
-			{
-				tmp = env[i];
-				env[i] = env[j];
-				env[j] = tmp;
-			}
-			j++;
-		}
-	}
-} */
-
 static void	print_env(char **env)
 {
 	int	i;
@@ -85,9 +62,8 @@ void	ft_env(char **args, t_shell *shell)
 	if (args && args[1])
 	{
 		print_error_command("env", "No such file or directory", 127, shell);
-		return;
+		return ;
 	}
-
 	count = 0;
 	while (shell->envp[count])
 		count++;

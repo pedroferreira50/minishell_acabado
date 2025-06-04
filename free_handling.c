@@ -3,63 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   free_handling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:19:30 by scarlos-          #+#    #+#             */
-/*   Updated: 2025/06/01 02:12:07 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:19:02 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_data_commands(char **commands, int num_commands)
+static void	free_input_files(t_command_data *data)
 {
 	int	i;
 
-	if (commands)
+	i = 0;
+	while (i < data->num_commands)
 	{
-		i = 0;
-		while (i < num_commands)
-		{
-			if (commands[i])
-				free(commands[i]);
-			i++;
-		}
-		free(commands);
+		if (data->input_files[i])
+			free(data->input_files[i]);
+		i++;
 	}
+	free(data->input_files);
+	data->input_files = NULL;
 }
 
-void	free_data_arguments(char ***arguments, int num_commands)
+static void	free_out_redirs_loop(t_redirection **out_redirs, \
+			int *num_out_redirs, int num_cmds)
 {
 	int	i;
 	int	j;
 
-	if (!arguments)
-		return ;
 	i = 0;
-	while (i < num_commands)
+	while (i < num_cmds)
 	{
-		if (arguments[i])
+		j = 0;
+		if (out_redirs[i])
 		{
-			j = 0;
-			while (arguments[i][j])
+			while (j < num_out_redirs[i])
 			{
-				free(arguments[i][j]);
+				if (out_redirs[i][j].file)
+					free(out_redirs[i][j].file);
 				j++;
 			}
-			free(arguments[i]);
+			free(out_redirs[i]);
 		}
 		i++;
 	}
-	free(arguments);
+}
+
+static void	free_out_redirs(t_command_data *data)
+{
+	if (data->out_redirs)
+	{
+		free_out_redirs_loop(data->out_redirs, data->num_out_redirs,
+			data->num_commands);
+		free(data->out_redirs);
+		data->out_redirs = NULL;
+	}
+	if (data->num_out_redirs)
+	{
+		free(data->num_out_redirs);
+		data->num_out_redirs = NULL;
+	}
 }
 
 void	free_command_data(t_command_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
 	if (!data)
 		return ;
 	if (data->commands)
@@ -67,56 +76,13 @@ void	free_command_data(t_command_data *data)
 	if (data->arguments)
 		free_data_arguments(data->arguments, data->num_commands);
 	if (data->input_files)
-	{
-		while (i < data->num_commands)
-		{
-			if (data->input_files[i])
-				free(data->input_files[i]);
-			i++;
-		}
-		free(data->input_files);
-	}
+		free_input_files(data);
 	if (data->heredoc_delim)
 	{
 		free(data->heredoc_delim);
 		data->heredoc_delim = NULL;
 	}
-	if (data->out_redirs && data->num_out_redirs)
-	{
-		i = 0;
-		while (i < data->num_commands)
-		{
-			if (data->out_redirs[i])
-			{
-				j = 0;
-				while (j < data->num_out_redirs[i])
-				{
-					if (data->out_redirs[i][j].file)
-						free(data->out_redirs[i][j].file);
-					j++;
-				}
-				free(data->out_redirs[i]);
-			}
-			i++;
-		}
-		free(data->out_redirs);
-		free(data->num_out_redirs);
-	}
+	free_out_redirs(data);
 	data->num_commands = 0;
 	data->num_pipes = 0;
-}
-
-void	free_args(char **args, t_command_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (args && args[i])
-	{
-		free(args[i]);
-		i++;
-	}
-	free(args);
-	if (data)
-		free_command_data(data);
 }

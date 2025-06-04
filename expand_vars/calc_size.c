@@ -78,15 +78,15 @@ static size_t	process_character_sequence(const char *arg, t_indices *indices,
 		if (arg[indices->i] == '\\' && arg[indices->i + 1])
 		{
 			size += handle_escape_sequences(arg, indices);
-			continue;
+			continue ;
 		}
 		if (arg[indices->i] == '$')
 		{
 			size += handle_dollar_expansion(arg, indices, shell);
-			continue;
+			continue ;
 		}
 		size++;
-		indices->i++;
+		indices->i++ ;
 	}
 	return (size);
 }

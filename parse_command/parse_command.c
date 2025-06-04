@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_command.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:42:33 by scarlos-          #+#    #+#             */
-/*   Updated: 2025/06/04 08:13:28 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:56:53 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static int	check_paren(t_parse *state, t_shell *shell, t_parse_result *result)
 static void	parse_loop(t_parse *state, t_shell *shell, t_parse_result *result,
 				int *last_was_operator)
 {
-
 	while (state->cmd[state->i])
 	{
 		while (ft_isspace(state->cmd[state->i]) && !state->in_quotes)

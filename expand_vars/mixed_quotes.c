@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mixed_quotes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 02:54:30 by pviegas-          #+#    #+#             */
-/*   Updated: 2025/06/04 08:12:07 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:43:46 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*expand_mixed_quotes(const char *str, t_shell *shell)
 	while (i < count)
 	{
 		result = join_expanded_segment(result,
-			expand_segment(&segments[i], shell));
+				expand_segment(&segments[i], shell));
 		if (segments[i].content)
 			free(segments[i].content);
 		i++;

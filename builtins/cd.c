@@ -3,46 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pviegas- <pviegas-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scarlos- <scarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:06:32 by scarlos-          #+#    #+#             */
-/*   Updated: 2025/06/04 06:53:52 by pviegas-         ###   ########.fr       */
+/*   Updated: 2025/06/04 11:23:26 by scarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/*
-static int	ft_set_env(char **envp, const char *name, const char *value)
-{
-	size_t	name_l;
-	size_t	value_len;
-	int		i;
-	char	*new_entry;
-
-	name_l = ft_strlen(name);
-	value_len = ft_strlen(value);
-	i = 0;
-	while (envp[i])
-	{
-		if (ft_strncmp(envp[i], name, name_l) == 0 && envp[i][name_l] == '=')
-		{
-			new_entry = malloc(name_l + value_len + 2);
-			if (!new_entry)
-				return (-1);
-			ft_strcpy(new_entry, name);
-			new_entry[name_l] = '=';
-			ft_strcpy(new_entry + name_l + 1, value);
-			free(envp[i]);
-			envp[i] = new_entry;
-			return (0);
-		}
-		i++;
-	}
-	return (-1);
-}
-*/
-
 
 static int	handle_cd_error(t_shell *shell, char *old_pwd, char *path)
 {
